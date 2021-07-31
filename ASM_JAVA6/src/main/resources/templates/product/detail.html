@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::body})}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <main th:object=${item}>
+       <legend>Chi tiết sản phẩm</legend>
+
+		<div class="container-fluid">
+            <div class="row">
+                <img th:src="@{|/images/*{image}|}" alt="" width="100%" height="200 em" class="col-sm-4">
+                <ul class="col-sm-8">
+                    <br><br><br>
+                    <li>Tên hàng: <b th:text="*{name}"></b> <span class="badge">NEW</span></li>
+                    <li>Đơn giá: <b th:text="*{price}"></b> <span class="badge">$</span></li>
+                    <li>Nhà cung cấp:  <b th:text="*{category.name}"></b></li>
+                    <li>Ngày sản xuất: <b th:text="*{createDate}"></b></li>
+                    
+                </ul>
+            </div>
+            <br><br><br>
+            <div class="row">
+            <legend>Hàng tương tự</legend>
+            <fieldset >     
+                <a th:each="p:*{category.products}" th:href="@{|/product/detail/${p.id}}">
+                    <img th:src="@{|/images/${p.image}|}" alt="" width="40 em" height="40 em" class="img-thumbnail" >
+                </a>
+            </fieldset>
+        </div>
+           
+        </div> 
+        <!-- <div class="container-fluid">
+            <div class="row">
+                <img th:src="@{|/images/${p.image}|}" alt="" width="100%" height="200 em" class="col-sm-4">
+                <ul class="col-sm-8">
+                    <br><br><br>
+                    <li>Tên hàng: [[${item.name}]] <span class="badge">NEW</span></li>
+                    <li>Đơn giá: [[${item.price}]] <span class="badge">Hot</span></li>
+                    <li>Nhà cung cấp: [[${item.category.name}]]</li>
+                    <li>Cho bạn những hình ảnh sắc nét</li>
+                    <li>Số lượng còn <span class="badge">5</span> cái</li>
+                    <li>Giảm giá: 20% <span class="badge">Đến hết 20/01</span></li>
+                </ul>
+            </div>
+           
+        </div> -->
+    </main>
+</body>
+
+</html>

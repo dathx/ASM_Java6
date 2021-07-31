@@ -1,0 +1,12 @@
+<div class="poly-cart" xmlns:th="http://www.thymeleaf.org">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <img class="col-sm-5" src="../images/shoppingcart.gif" />
+            <ul class="col-sm-7">
+                <li>{{cart.count}} items</li>
+                <li>$ {{cart.amount|number:2}}</li>
+                <li><a th:href="@{/cart/view}">View Cart</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
